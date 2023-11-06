@@ -27,4 +27,4 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 })
 
-app.listen(9000, () => console.log("The server is running on port 9000"))
+app.listen(process.env.PORT || 9000, () => console.log("The server is running on port 3000"))
