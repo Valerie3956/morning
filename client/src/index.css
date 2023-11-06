@@ -1,0 +1,291 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+}
+
+body{
+  font-family: "montserrat";
+}
+
+.header, .footer{
+  background-color: #adb8ba;
+  height: 15vh;
+  /* padding:30px; */
+  width:100%;
+  display:flex;
+  justify-content: space-around;
+}
+
+
+.main{
+  height: 70vh;
+  background-color: #edeae3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color:#153147;
+
+}
+
+/* Header  */
+
+.nav{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navItems{
+  list-style: none;
+  color: #22292f;
+  transition: all 0.75s ease-in-out;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 200;
+  font-family: "montserrat";
+}
+
+.navItems:hover{
+  background-color: #edeae3;
+  color: #153147;
+  font-weight: 300;
+}
+
+.link{
+  text-decoration:none;
+}
+
+/* footer */
+
+.footer {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+.footer>a {
+  color: #22292f;
+  transition: all 0.75s ease-in-out;
+}
+
+.footer>a:hover {
+  color: #153147
+}
+
+/* Home */
+
+.quote{
+  height:50vh;
+  width: 50vw;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.quote > h2, h3{
+  font-family: "montserrat";
+margin: 30px
+}
+
+.quote > h3 {
+  font-style: italic;
+}
+
+.zen{
+  font-size: 10px;
+}
+
+.zen > a{
+  text-decoration: none;
+  color: #153147;
+}
+
+.navButtons{
+  display: flex;
+  position:absolute;
+  bottom:17vh
+}
+
+.button{
+  color: #22292f;
+  transition: all 0.75s ease-in-out;
+  padding: 10px 20px 10px 20px;
+  margin: 10px 40px 10px 40px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 200;
+  border: none;
+  background-color: #edeae3;
+  font-family: "montserrat";
+  height:fit-content
+}
+
+.button:hover{
+  background-color: #adb8ba;
+  color: #153147;
+  font-weight: 300;
+}
+
+/* meditation  */
+
+.meditationButton{
+  border-radius: 100%;
+  border:none;
+  height:200px;
+  width:200px;
+  font-family: 'Montserrat';
+  background-color: #153147;
+  color:#f9f8f6;
+  font-size: 40px;
+  transition: all 0.75s ease-in-out;
+}
+
+.meditationButton:hover{
+  box-shadow: -1px 1px 5px 29px rgba(173,184,186,0.75) ;
+}
+
+/* journal entries */
+
+.journal{
+  width:80vw;
+  overflow: auto;
+  margin-top: 25px;
+}
+
+.journal >h4, p{
+  margin:10px 0px 10px 0px
+}
+
+.journal >p{
+  padding-bottom: 10px;
+  border-bottom: solid 1px #153147;
+}
+
+/* journal form page */
+
+.journalForm{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.date{
+  padding:10px 20px 10px 20px;
+  margin-bottom:10px;
+  background-color: #f9f8f6;
+  color:#153147;
+  border:none
+}
+
+.textarea{
+  width:60vw;
+  height:30vh;
+  background-color: #f9f8f6;
+  color:#153147;
+  font-size: 20px;
+  resize:none;
+  border:none
+}
+
+.journalForm > button{
+  color: #153147;
+  transition: all 0.75s ease-in-out;
+  padding: 10px 20px 10px 20px;
+  margin: 10px 0px 10px 00px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 200;
+  border: none;
+  background-color: #f9f8f6;
+  font-family: "montserrat";
+}
+
+
+.button:hover{
+  background-color: #adb8ba;
+  color: #153147;
+  font-weight: 300;
+}
+
+/* checklist */
+
+.checklistContainer{
+  display:flex;
+  height:60vh;
+  position:absolute;
+  bottom: 25vh
+}
+
+.checklist{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y:auto;
+  width: 30vw;
+  overflow-wrap: normal;
+}
+
+.checklist > div{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height:50px;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.checklist >div:hover{
+  cursor: pointer;
+}
+
+.editButton{
+  color: #153147;
+  transition: all 0.75s ease-in-out;
+  padding: 5px 10px 5px 10px;
+  margin: 5px 5px 5px 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 200;
+  border: none;
+  background-color: #f9f8f6;
+  font-family: "montserrat";
+}
+
+.editButton:hover{
+  background-color: #adb8ba;
+  color: #153147;
+  font-weight: 300;
+}
+
+.checklistInput{
+  background-color: #f9f8f6;
+  color:#153147;
+  border:none;
+  font-family: 'montserrat';
+  height: 30px;
+  width:200px;
+}
+
+.unchecked{
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.checked{
+  text-decoration: line-through;
+  font-weight: 200;
+}
+
+
+
+/* colors
+white #f9f8f6 rgba(249,248,246,255)
+ivory #edeae3 rgba(237,234,227,255)
+pale blue #adb8ba rgba(173,184,186,255)
+dark blue #153147 rgba(21,49,71,255)
+charcoal #22292f rgba(34,41,47,255) */
