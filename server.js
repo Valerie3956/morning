@@ -9,7 +9,7 @@ const path = require("path")
 
 app.use(express.json())
 app.use(morgan('dev'))
-app.use(express.static(path.join(__dirname, "client", "build")))
+app.use(express.static(path.join(__dirname, "client", "dist")))
 
 
 app.use("/morning/journal", require("./routes/journalRouter.js"))
@@ -27,4 +27,4 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 })
 
-app.listen(process.env.PORT || 9000, () => console.log("The server is running on port 3000"))
+app.listen(process.env.PORT || 9000, () => console.log("The server is running on port 9000"))
