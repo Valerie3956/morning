@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/morning': {
-        target: !isDevEnv? "https://valerie3956morning.app" : 'http://127.0.0.1:9000',
+        target: !isDevEnv? "https://valerie3956morning.cyclic.app" : 'http://127.0.0.1:9000',
         changeOrigin: true,
         secure: false,
       },
