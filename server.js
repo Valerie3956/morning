@@ -14,7 +14,6 @@ app.use(express.static(path.join(__dirname, "client", "dist")))
 
 app.use("/morning/journal", require("./routes/journalRouter.js"))
 app.use("/morning/checklist", require("./routes/checklistRouter.js"))
-mongoose.connect(URL, () => console.log('connected to database'))
 
 
 app.use((err, req, res, next) => {
@@ -26,5 +25,6 @@ app.use((err, req, res, next) => {
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 })
+mongoose.connect(URL, () => app.listen(process.env.PORT || 9000, () => console.log("The server is running on port 9000")))
 
-app.listen(process.env.PORT || 9000, () => console.log("The server is running on port 9000"))
+// app.listen(process.env.PORT || 9000, () => console.log("The server is running on port 9000"))
