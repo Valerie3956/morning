@@ -3,45 +3,53 @@ const checklistRouter = express.Router()
 const Checklist = require('../models/checklist')
 
 
-checklistRouter.get("/", (req, res, next) => {
-  Checklist.find((err, item) => {
-    if (err) {
-      res.status(500)
-      return next(err)
-    }
-    return res.status(200).send(item)
-  })
+checklistRouter.get("/", async (req, res, next) => {
+  try {
+const items = await Checklist.find()
+return res.status(200).send(items)
+  } catch (error) {
+    res.status(500)
+    return next(error)
+  }
+
 })
 
-checklistRouter.post("/", (req, res, next) => {
-  const newItem = new Checklist(req.body)
-  newItem.save((err, savedItem) => {
-    if (err) {
-      res.status(500)
-      return next(err)
-    }
-    return res.status(201).send(savedItem)
-  })
+checklistRouter.post("/", async (req, res, next) => {
+try {
+  const newItem = await new Checklist(req.body)
+const savedItem = await newItem.save()
+return res.status(201).send(savedItem)
+} catch (error) {
+  res.status(500)
+  return next(error)
+}
+
 })
 
-checklistRouter.delete("/:checklistId", (req, res, next) => {
-  Checklist.findOneAndDelete({ _id: req.params.checklistId }, (err, deletedItem) => {
-    if (err) {
-      res.status(500)
-      return next(err)
-    }
-    return res.status(200).send(`Successfully deleted bounty ${deletedItem} from the database`)
-  })
+checklistRouter.delete("/:checklistId", async (req, res, next) => {
+try {
+const deletedItem = await Checklist.findByIdAndDelete(req.params.checklistId)
+return res.status(200).send(`Successfully deleted checklist item ${deletedItem.item} from the database`)
+} catch (error) {
+  res.status(500)
+  return next(error)
+}
+
 })
 
-checklistRouter.put('/:checklistId', (req, res, next) => {
-  Checklist.findByIdAndUpdate({_id: req.params.checklistId}, req.body, {new:true}, (err, updatedItem) => {
-    if(err){
-      res.status(500)
-      return next(err)
-    }
-    return res.status(200).send(updatedItem)
-  })
+checklistRouter.put('/:checklistId', async (req, res, next) => {
+
+try{
+  const updatedItem = await Checklist.findByIdAndUpdate(
+    req.params.checklistId,
+    req.body,
+    {new:true},
+  )
+return res.status(201).send(updatedItem)
+} catch (error) {
+  res.status(500)
+  return next(error)
+}
 })
 
 

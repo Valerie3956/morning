@@ -30,7 +30,7 @@ function JournalContextProvider(props) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        axios.post("/morning/journal", formData)
+        axios.post("https://globalbackend-zued.onrender.com/morning/journal", formData)
             .then(res => setJournalEntries(prevEntries => [...prevEntries, formData]))
             .catch(err => console.log(err.res.data.errMsg))
         // setJournalEntries(prevEntries => [...prevEntries, formData])
@@ -41,7 +41,7 @@ function JournalContextProvider(props) {
 useEffect(() => {
 
     // GET REQUEST FROM DB
-    axios.get("/morning/journal")
+    axios.get("https://globalbackend-zued.onrender.com/morning/journal")
     .then(res => {setJournalEntries(res.data)})
     .catch(err => console.log(err.response.data.errMsg))
 }, [])
