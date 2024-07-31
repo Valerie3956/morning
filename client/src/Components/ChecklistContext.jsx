@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-
+const URL = import.meta.env.VITE_API_URL
 
 const ChecklistContext = React.createContext()
 
@@ -11,7 +11,7 @@ function ChecklistContextProvider(props) {
 
     // get checklist items
     useEffect(() => {
-    axios.get("https://globalbackend-zued.onrender.com/morning/checklist")
+    axios.get(`${URL}/checklist`)
     .then(res => setChecklistItem(res.data))
     .catch(err => err.response.data.errMsg)
 }, [])
@@ -20,7 +20,7 @@ function ChecklistContextProvider(props) {
     //add item
 
     function addItem(newItem) {
-        axios.post("https://globalbackend-zued.onrender.com/morning/checklist", newItem)
+        axios.post(`${URL}/checklist`, newItem)
         .then(res => {
 
             setChecklistItem(prevItems => [...prevItems, res.data])
@@ -41,7 +41,7 @@ function ChecklistContextProvider(props) {
     function editItem(updatedItem, id) {
         console.log(updatedItem, id)
         // put checklist item
-        axios.put(`https://globalbackend-zued.onrender.com/morning/checklist/${id}`, updatedItem)
+        axios.put(`${URL}/checklist/${id}`, updatedItem)
         .then(res => {
             setChecklistItem(prevItems => prevItems.map(item => item._id !== id? item : res.data))
         })
@@ -52,7 +52,7 @@ function ChecklistContextProvider(props) {
     //delete function
     function deleteItem(id){
         console.log(id)
-axios.delete(`https://globalbackend-zued.onrender.com/morning/checklist/${id}`)
+axios.delete(`${URL}/checklist/${id}`)
 .then(res => console.log(res))
 .catch(err => err.response.data.errMsg)
 setChecklistItem(prevList => prevList.filter(item => item._id !== id))

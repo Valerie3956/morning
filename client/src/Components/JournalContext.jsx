@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-
+const URL = import.meta.env.VITE_API_URL
 
 const JournalContext = React.createContext()
 
@@ -30,7 +30,7 @@ function JournalContextProvider(props) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        axios.post("https://globalbackend-zued.onrender.com/morning/journal", formData)
+        axios.post(`${URL}/journal`, formData)
             .then(res => setJournalEntries(prevEntries => [...prevEntries, formData]))
             .catch(err => console.log(err.res.data.errMsg))
         // setJournalEntries(prevEntries => [...prevEntries, formData])
@@ -41,7 +41,7 @@ function JournalContextProvider(props) {
 useEffect(() => {
 
     // GET REQUEST FROM DB
-    axios.get("https://globalbackend-zued.onrender.com/morning/journal")
+    axios.get(`${URL}/journal`)
     .then(res => {setJournalEntries(res.data)})
     .catch(err => console.log(err.response.data.errMsg))
 }, [])
